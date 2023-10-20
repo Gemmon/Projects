@@ -1,0 +1,126 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char URL[] = "";
+char folder[] = "";
+
+
+int main(){
+
+    int flag = 0;
+    int choice = 0;
+    system("cd C:\\yt-dlp");
+    system("md C:\\Users\\Gekko\\Desktop\\yt\\download");
+    
+    /**/
+    
+    while(1){
+      
+
+      printf("\nChoose command: \n1.Download audio \n2.Download video\n3.Change location(not working) \n4.Update yt-dlp \n5.Exit\n");
+      scanf("%d", &choice);
+      
+      switch(choice){
+          
+          case 1: 
+            
+            while(1){
+            
+            char location[] = fopen("location.txt", "r");
+            char command[]= "yt-dlp -x --audio-format mp3 -o ";
+            strcat(command, location);
+            printf("\nGive the URL: ");
+            scanf("%s", &URL);
+            strcat(command, URL);
+            system(command);
+            
+            printf("Press 1 to continue... or 2 to exit\n");
+            scanf("%d", &flag);
+            if(flag == 2){
+            flag = 0;
+            break;
+            };
+            
+            
+            }
+           
+            break;
+
+          case 2:
+            
+          while(1){
+
+            char video[] = "yt-dlp -o C:\\Users\\Gekko\\Desktop\\yt-dlp\\download";
+            printf("\nGive the URL: ");
+            scanf("%s", &URL);
+            strcat(video, URL);
+            system(video);
+
+
+            printf("Press 1 to continue... or 2 to exit\n");
+            scanf("%d", &flag);
+            if(flag == 2){
+            flag = 0;
+            break;
+            }
+
+          } 
+
+          break;
+
+          case 3:
+/*
+           printf("Write the correct path to the folder, example: music\n");
+           scanf("%s", &folder);
+           
+
+           char location[] = "C:\\yt-dlp\\";
+           printf("location: %s", location);
+           printf("\ntest: %%\n");
+           char title[] = "\\%%(title)s.%%(ext)s";
+           printf(" title: %s", title);
+           strcat(location, folder);
+           printf(" location: %s", location);
+           strcat(location, title);
+           printf(" location: %s", location);
+
+           
+          FILE *file = fopen("location.txt", "w");
+
+           if (file == NULL) {
+           printf("Unable to open the file for clearing.\n");
+           return 1;
+           } else { printf("File opened... "); }
+
+           
+           
+           fprintf(file, "%s", location);
+           fclose(file);
+*/
+
+          break;
+
+          case 4:
+          
+            system("yt-dlp -U\n");
+
+          break;
+
+          case 5:
+          
+            printf("Exiting...\n");
+            exit(0);
+
+          default:
+            
+            printf("Choose again: \n");
+          
+     }
+     
+     printf("Press Enter to continue...");
+     getchar();
+
+    }
+  return 0;
+}
